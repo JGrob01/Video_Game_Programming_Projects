@@ -1,0 +1,248 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/Fonts/Star7-Eaowe.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/UI/DamageBorder.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Placements/3rd.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/MeterBackground.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/TurboMeter.png" type="Texture" id=5]
+[ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Cars/CarTemplate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/HelpMenu.gd" type="Script" id=8]
+[ext_resource path="res://Assets/UI/Help/D.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/Help/A.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/Help/W.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI/Help/Shift.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Help/Space.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI/HealthMeter.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI/Coin.png" type="Texture" id=15]
+[ext_resource path="res://Assets/UI/CheckerBannerButton.png" type="Texture" id=16]
+[ext_resource path="res://Assets/UI/Help/Q.png" type="Texture" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+
+[node name="DamageTextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 2 )
+stretch_mode = 1
+
+[node name="RankingTextureRect" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -164.0
+margin_top = 10.0
+margin_right = 860.0
+margin_bottom = 570.0
+grow_horizontal = 0
+rect_scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="SpeedLabel" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 97.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 1 )
+text = "56mph"
+
+[node name="Turbometer" type="TextureProgress" parent="SpeedLabel"]
+margin_top = 34.0
+margin_right = 165.0
+margin_bottom = 55.0
+value = 62.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+
+[node name="Label3" type="Label" parent="SpeedLabel"]
+margin_left = 5.0
+margin_top = 93.0
+margin_right = 375.0
+margin_bottom = 175.0
+text = "Here is a speed indicator, your Turbometer, and your health meter. The speed indicator shows you how fast you are going while the turbometer tells you when you can use your turbo thruster. Your health meter shows how much health is left."
+autowrap = true
+
+[node name="HealthMeter" type="TextureProgress" parent="SpeedLabel"]
+margin_top = 65.0
+margin_right = 165.0
+margin_bottom = 86.0
+value = 72.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 14 )
+
+[node name="Map" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -138.0
+margin_top = -138.0
+margin_right = 374.0
+margin_bottom = 374.0
+rect_scale = Vector2( 0.25, 0.25 )
+
+[node name="Label2" type="Label" parent="Map"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -204.0
+margin_right = -591.0
+margin_bottom = -668.0
+text = "The minimap tells you where you are on the map"
+autowrap = true
+
+[node name="CarTemplate" parent="." instance=ExtResource( 7 )]
+position = Vector2( 450, 325 )
+rotation = -0.518363
+
+[node name="WASD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 429.0
+margin_right = -774.0
+margin_bottom = -89.0
+
+[node name="WTexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -2.0
+margin_right = 400.0
+margin_bottom = 325.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="ATexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = 40.8999
+margin_right = 348.0
+margin_bottom = 367.9
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="QTexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 348.0
+margin_bottom = 325.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
+
+[node name="DTexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 0.998
+margin_left = 102.0
+margin_top = 40.8999
+margin_right = 452.0
+margin_bottom = 368.064
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+
+[node name="ShiftTexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 0.998
+margin_left = -90.0
+margin_top = 86.0
+margin_right = 531.0
+margin_bottom = 413.164
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+
+[node name="SpaceTexture" type="TextureRect" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 0.998
+margin_left = -9.0
+margin_top = 86.0
+margin_right = 1509.0
+margin_bottom = 413.164
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="WASD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -90.0
+margin_top = -77.0
+margin_right = 176.0
+margin_bottom = -94.0
+text = "Use WAD to go forward and turn
+Use Shift to go backwards or brake
+Use Space to activate thruster when the blue bar at the top is full
+Use Q to switch the song that's playing, once you collect disks"
+
+[node name="CoinTexture" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -34.0
+margin_right = 22.0
+margin_bottom = -22.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="CoinLabel" type="Label" parent="CoinTexture"]
+margin_left = 12.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "5"
+
+[node name="TimerLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.0
+margin_top = 105.0
+margin_right = -10.0
+margin_bottom = 129.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 2 )
+text = "00:01:39"
+align = 2
+valign = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 882.0
+margin_top = 415.0
+margin_right = -14.0
+margin_bottom = -147.0
+texture_normal = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="MainMenuButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 7.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 3 )
+text = "Main Menu"
+align = 1
+valign = 1
+
+[connection signal="mouse_entered" from="MainMenuButton" to="." method="_on_MainMenuButton_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuButton" to="." method="_on_MainMenuButton_mouse_exited"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

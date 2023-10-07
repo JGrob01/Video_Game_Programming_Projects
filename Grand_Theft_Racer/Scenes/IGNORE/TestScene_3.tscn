@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/IGNORE/TestScene3.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Cars/Sports-Car-1-red.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/FollowMouse.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 135, 295, 0, 0, 0, 0, 231, 232, 0, 0, 0, 0, 358, 242, 0, 0, 0, 0, 463, 256, 0, 0, 0, 0, 607, 311, 0, 0, 0, 0, 705, 443, 0, 0, 0, 0, 613, 579, 0, 0, 0, 0, 515, 758, 0, 0, 0, 0, 805, 727, 0, 0, 0, 0, 942, 469, 0, 0, 0, 0, 980, 295, 0, 0, 0, 0, 892, 144, 158.919, 112.303, -158.919, -112.303, 616, 78, 0, 0, 0, 0, 391, 57, 0, 0, 0, 0, 251, 68, 0, 0, 0, 0, 62, 105, 0, 0, 0, 0, -36, 142, 0, 0, 0, 0, -26, 264, 0, 0, 0, 0, 59, 339, 0, 0, 0, 0, 106, 337, 0, 0, 0, 0, 135, 295 )
+}
+
+[node name="TestScene_3" type="Node2D"]
+script = ExtResource( 1 )
+red_dot_file = NodePath("RedDot")
+object_file = NodePath("Car")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="RedDot" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Car" type="Sprite" parent="."]
+position = Vector2( 778, 36 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )

@@ -1,5 +1,4 @@
-# Space Racer
-## CSC361 Project 3 Group 6
+# Space Fox
 
 ## Controls
 <kbd>Q</kbd>/<kbd>E</kbd> Throttle up/down

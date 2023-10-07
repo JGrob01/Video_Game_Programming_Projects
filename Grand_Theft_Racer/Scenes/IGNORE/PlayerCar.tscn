@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/IGNORE/CarMovement.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Cars/Sports-Car-1-red.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Particles/TurboParticles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sounds/080136_v8-supercar-acceleration-82900.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Cars/CustomCar.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 21.0
+height = 44.0
+
+[node name="PlayerCar" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TurboParticlesLeft" parent="." instance=ExtResource( 3 )]
+position = Vector2( -40, -10 )
+
+[node name="TurboParticlesRight" parent="." instance=ExtResource( 3 )]
+position = Vector2( -40, 10 )
+
+[node name="ParticleSpawnLocation" type="Node2D" parent="."]
+position = Vector2( -60, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="CustomCar" parent="." instance=ExtResource( 5 )]
+accentColor = Color( 0.45098, 1, 0.717647, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 0.01
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 70, 0 )
+current = true
+process_mode = 0
+smoothing_enabled = true
+smoothing_speed = 9.0
